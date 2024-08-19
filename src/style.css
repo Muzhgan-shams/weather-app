@@ -1,1 +1,78 @@
+body {
+  font-family: 'Lato', sans-serif;
+  background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/140/110/original/billy-huynh-v9bnfMCyKbg-unsplash.jpg?1724091266);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #020205;
+}
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0%;
+}
 
+.container {
+  background: #fafafa5b;
+  margin: 50px auto;
+  max-width: 700px;
+  padding: 30px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+.search-input {
+  background: #0086d348;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 30px;
+  width: 80%;
+  font-size: 1rem;
+}
+.search-button {
+  background: #3e4a61;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 30px;
+  color: white;
+  font-size: 1rem;
+  margin-left: 5px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.forecast {
+  display: flex;
+  justify-content: space-between;
+}
+.place-temperature {
+  display: flex;
+}
+.temperature {
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 80px;
+  margin-top: 50px;
+}
+.temp-icon {
+  font-size: 2.5rem;
+  margin-top: 60px;
+  margin-right: 10px;
+}
+.temp-degree {
+  font-size: 2rem;
+  margin-top: 50px;
+  font-weight: 500;
+}
+
+a {
+  color: #0086d3;
+}
+
+strong {
+  color: #e43a19;
+}
+
+footer {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 50px;
+}
