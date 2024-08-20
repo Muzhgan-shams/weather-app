@@ -29,7 +29,8 @@ h1 {
   font-size: 1rem;
 }
 .search-button {
-  background: #3e4a61;
+  background: #3e4a61bb;
+  backdrop-filter: blur(5px);
   border: none;
   border-radius: 5px;
   padding: 15px 30px;
@@ -71,7 +72,36 @@ a {
 strong {
   color: #e43a19;
 }
+.weather-forecast {
+  display: flex;
+  justify-content: space-around;
+  margin: 30px auto;
+  flex-wrap: wrap;
+}
+.weather-forecast-date {
+  margin-bottom: 10px;
+  text-align: center;
+}
+.weather-forecast-icon {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 30px;
+}
+.weather-forecast-temperature {
+  margin: 5px;
+}
 
+.weather-forecast-day {
+  background: #3e4a61bb;
+  backdrop-filter: blur(5px);
+  padding: 15px;
+  margin: 15px auto;
+  border-radius: 10px;
+  color: white;
+}
+.weather-forecast-temperatures {
+  display: flex;
+}
 footer {
   font-size: 14px;
   text-align: center;
