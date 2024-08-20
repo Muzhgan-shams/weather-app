@@ -50,13 +50,13 @@ h1 {
 .temperature {
   font-size: 5rem;
   font-weight: 700;
-  line-height: 80px;
-  margin-top: 50px;
+  margin-left: 0%;
+  margin-top: 60px;
 }
 .temp-icon {
-  font-size: 2.5rem;
-  margin-top: 40px;
-  margin-right: 10px;
+  width: 88px;
+  height: 88px;
+  margin-top: 50px;
 }
 .temp-degree {
   font-size: 2rem;
@@ -93,7 +93,7 @@ footer {
 
 @media (max-width: 475px) {
   h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   .temperature {
     font-size: 4rem;
@@ -105,9 +105,7 @@ footer {
     padding: 10px 15px;
   }
   .temp-icon {
-    font-size: 2rem;
     margin-top: 40px;
-    margin-right: 8px;
   }
   .temp-degree {
     font-size: 1.5rem;
@@ -116,9 +114,13 @@ footer {
   }
 }
 @media (max-width: 372px) {
-  h1 {
-    font-size: 2.5rem;
+  .container {
+    padding: 20px;
   }
+  h1 {
+    font-size: 2rem;
+  }
+
   .temperature {
     font-size: 3rem;
   }
@@ -129,13 +131,14 @@ footer {
     padding: 8px 12px;
   }
   .temp-icon {
-    font-size: 1rem;
-    margin-top: 40px;
-    margin-right: 5px;
+    margin-top: 55px;
+    width: 66px;
+    height: 66px;
   }
   .temp-degree {
     font-size: 1rem;
     margin-top: 50px;
     font-weight: 500;
+    overflow: hidden;
   }
 }
