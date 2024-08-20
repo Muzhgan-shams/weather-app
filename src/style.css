@@ -79,6 +79,9 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .container {
+    max-width: 600px;
+  }
   .search-input {
     padding: 10px 25px;
     width: 70%;
