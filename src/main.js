@@ -1,5 +1,5 @@
-import dotenv from "dotenv";
-dotenv.config();
+console.log(import.meta.env.VITE_API_KEY);
+import axios from "axios";
 function changeWeather(response) {
   let tempElement = document.querySelector("#temp");
   let temperature = response.data.temperature.current;
@@ -55,7 +55,7 @@ function formatDate(date) {
 }
 
 function searchCity(city) {
-  let apiKey = process.env.API_KEY;
+  let apiKey = import.meta.env.VITE_API_KEY;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(changeWeather);
 }
@@ -75,7 +75,7 @@ function formatDay(timestamp) {
 }
 
 function getForecast(city) {
-  let apiKey = process.env.API_KEY;
+  let apiKey = import.meta.env.VITE_API_KEY;
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }

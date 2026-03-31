@@ -1,5 +1,5 @@
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/140/110/original/billy-huynh-v9bnfMCyKbg-unsplash.jpg?1724091266);
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,6 +19,7 @@ h1 {
   border-radius: 10px;
   backdrop-filter: blur(5px);
   box-shadow: 2px 2px 100px #42403f79;
+  animation: fadeIn 0.5s ease;
 }
 
 .search-input {
@@ -29,7 +30,14 @@ h1 {
   width: 80%;
   font-size: 1rem;
   box-shadow: 1px 1px 10px #42403f79;
+  transition: box-shadow 0.2s ease;
+  outline: none;
+
+  &:focus {
+    box-shadow: 1px 1px 18px #42403fbb;
+  }
 }
+
 .search-button {
   background: #3e4a61bb;
   backdrop-filter: blur(5px);
@@ -38,30 +46,49 @@ h1 {
   padding: 15px 30px;
   color: white;
   font-size: 1rem;
-
   margin-left: 5px;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+
   &:hover {
     cursor: pointer;
+    background: #3e4a61ee;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 }
+
 .forecast {
   display: flex;
   justify-content: space-between;
 }
+
 .place-temperature {
   display: flex;
 }
+
 .temperature {
   font-size: 5rem;
   font-weight: 700;
   margin-left: 0%;
   margin-top: 60px;
 }
+
 .temp-icon {
   width: 88px;
   height: 88px;
   margin-top: 60px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: rotate(15deg) scale(1.1);
+  }
 }
+
 .temp-degree {
   font-size: 2rem;
   margin-top: 50px;
@@ -70,17 +97,24 @@ h1 {
 
 a {
   color: #0086d3;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.75;
+  }
 }
 
 strong {
   color: #e43a19;
 }
+
 .weather-forecast {
   display: flex;
   justify-content: space-around;
   margin: 30px auto;
   flex-wrap: wrap;
 }
+
 .weather-forecast-day {
   background: #3e4a61bb;
   backdrop-filter: blur(5px);
@@ -89,18 +123,35 @@ strong {
   border-radius: 10px;
   color: white;
   box-shadow: 1px 1px 10px #42403f79;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  animation: slideUp 0.4s ease both;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 2px 6px 18px #42403f99;
+  }
 }
+
 .weather-forecast-date {
   margin-bottom: 10px;
   text-align: center;
 }
+
 .weather-forecast-icon {
   width: 60px;
   height: 60px;
   display: block;
   margin: 0 auto;
   margin-bottom: 10px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.15);
+  }
 }
+
 .weather-forecast-temperature {
   display: block;
   margin: 0 auto;
@@ -109,10 +160,34 @@ strong {
 .weather-forecast-temperatures {
   display: flex;
 }
+
 footer {
   font-size: 14px;
   text-align: center;
   margin-top: 50px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
@@ -150,6 +225,7 @@ footer {
     font-weight: 500;
   }
 }
+
 @media (max-width: 372px) {
   .container {
     padding: 20px;
@@ -157,7 +233,6 @@ footer {
   h1 {
     font-size: 2rem;
   }
-
   .temperature {
     font-size: 3rem;
   }
