@@ -1,13 +1,15 @@
+import dotenv from "dotenv";
+dotenv.config();
 function changeWeather(response) {
-  let tempElement = document.querySelector('#temp');
+  let tempElement = document.querySelector("#temp");
   let temperature = response.data.temperature.current;
-  let cityElement = document.querySelector('#city-name');
-  let descriptionElement = document.querySelector('#description');
-  let humidityElement = document.querySelector('#humidity');
-  let windSpeedElement = document.querySelector('#wind-speed');
-  let timeElement = document.querySelector('#time');
+  let cityElement = document.querySelector("#city-name");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windSpeedElement = document.querySelector("#wind-speed");
+  let timeElement = document.querySelector("#time");
   let date = new Date(response.data.time * 1000);
-  let iconElement = document.querySelector('#icon');
+  let iconElement = document.querySelector("#icon");
 
   iconElement.innerHTML = `<img src='${response.data.condition.icon_url}' class='temp-icon'/>`;
   cityElement.innerHTML = response.data.city;
@@ -23,24 +25,24 @@ function formatDate(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
   let days = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
   ];
   let day = days[date.getDay()];
   // Convert to 12-hour format
   let period;
   if (hours >= 12) {
-    period = 'PM';
+    period = "PM";
     if (hours > 12) {
       hours -= 12;
     }
   } else {
-    period = 'AM';
+    period = "AM";
     if (hours === 0) {
       hours = 12;
     }
@@ -53,33 +55,33 @@ function formatDate(date) {
 }
 
 function searchCity(city) {
-  let apiKey = 'o1214355d46e610e0665f9f2cae5tadb';
+  let apiKey = process.env.API_KEY;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(changeWeather);
 }
 
 function handleSearchSubmit(event) {
   event.preventDefault();
-  let searchInput = document.querySelector('#search-input');
+  let searchInput = document.querySelector("#search-input");
 
   searchCity(searchInput.value);
 }
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
-  let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return days[date.getDay()];
 }
 
 function getForecast(city) {
-  let apiKey = 'o1214355d46e610e0665f9f2cae5tadb';
+  let apiKey = process.env.API_KEY;
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
-  let forecastHtml = '';
+  let forecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
     if (index < 5) {
@@ -94,17 +96,17 @@ function displayForecast(response) {
    <strong>${Math.round(day.temperature.maximum)}º</strong>
    </div>
    <div class="weather-forecast-temperature">${Math.round(
-     day.temperature.minimum
+     day.temperature.minimum,
    )}º</div>
    </div>
    </div>`;
     }
   });
-  let forecastElement = document.querySelector('#forecast');
+  let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
 
-let searchFormElement = document.querySelector('#search-form');
-searchFormElement.addEventListener('submit', handleSearchSubmit);
+let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", handleSearchSubmit);
 
-searchCity('Kabul');
+searchCity("Kabul");
